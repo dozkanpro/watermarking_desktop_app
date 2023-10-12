@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import filedialog, colorchooser, PhotoImage
+from tkinter import filedialog, colorchooser
 from PIL import Image, ImageDraw, ImageFont
 
+GREEN = "#008170"
 logo_path = None
 
 
@@ -30,7 +31,7 @@ def add_watermark():
     image_with_watermark_path = "output_image.png"
     image.save(image_with_watermark_path)
 
-    result_label.config(text="Watermark added successfully!")
+    result_label.config(text="Watermark added successfully!", fg=GREEN, font=('Arial', 12, 'bold'))
 
     img = tk.PhotoImage(file=image_with_watermark_path)
     image_label.config(image=img)
@@ -51,39 +52,41 @@ def select_color():
 
 app = tk.Tk()
 app.title("Image Watermark Tool")
+app.minsize(height=400, width=300)
 
-watermark_label = tk.Label(app, text="Watermark Text:")
+watermark_label = tk.Label(app, text="Watermark Text:", font=('Arial', 11, 'bold'))
 watermark_label.pack()
 watermark_entry = tk.Entry(app)
+watermark_entry.focus()
 watermark_entry.pack()
 
-position_label = tk.Label(app, text="Watermark Position (X, Y):")
+position_label = tk.Label(app, text="Watermark Position (X, Y):", font=('Arial', 11, 'bold'))
 position_label.pack()
 watermark_x_entry = tk.Entry(app)
 watermark_x_entry.pack()
 watermark_y_entry = tk.Entry(app)
 watermark_y_entry.pack()
 
-font_size_label = tk.Label(app, text="Font Size:")
+font_size_label = tk.Label(app, text="Font Size:", font=('Arial', 11, 'bold'))
 font_size_label.pack()
 font_size_entry = tk.Entry(app)
 font_size_entry.pack()
 
-watermark_color_label = tk.Label(app, text="Watermark Color:")
+watermark_color_label = tk.Label(app, text="Watermark Color:", font=('Arial', 11, 'bold'))
 watermark_color_label.pack()
 watermark_color_var = tk.StringVar()
 watermark_color_entry = tk.Entry(app, textvariable=watermark_color_var)
 watermark_color_entry.pack()
-color_button = tk.Button(app, text="Select Color", command=select_color)
+color_button = tk.Button(app, text="Select Color", command=select_color, font=('Arial', 9, 'bold'))
 color_button.pack()
 
-logo_label = tk.Label(app, text="Logo: None")
+logo_label = tk.Label(app, text="Logo: None", font=('Arial', 11, 'bold'))
 logo_label.pack()
-select_logo_button = tk.Button(app, text="Select Logo", command=select_logo)
+select_logo_button = tk.Button(app, text="Select Logo", command=select_logo, font=('Arial', 9, 'bold'))
 select_logo_button.pack()
 
-apply_button = tk.Button(app, text="Apply", command=add_watermark)
-apply_button.pack(pady=10)
+apply_button = tk.Button(app, text="Apply", command=add_watermark, font=('Arial', 9, 'bold'), width=10, bg=GREEN)
+apply_button.pack(pady=20)
 
 result_label = tk.Label(app, text="")
 result_label.pack()
