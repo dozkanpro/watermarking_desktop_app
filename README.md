@@ -8,4 +8,6 @@
   <div align='center'><img src='watermarkUI.png' alt='Image showing Watermarking Desktop App UI'/></div>
 
   ## Features
-  -
+  - **Python**
+  - **Tkinter** to **upload file** and **choose color** of watermark.
+  - **PIL** to processing image.
